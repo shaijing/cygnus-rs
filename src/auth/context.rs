@@ -209,7 +209,7 @@ fn ror(data: &[u8], pwd: &[u8]) -> Vec<u8> {
     let mut ret = Vec::new();
     for i in 0..pwd.len() {
         let x = data[i] ^ pwd[i];
-        ret.push((x << 3) + (x >> 5));
+        ret.push(x.rotate_left(3));
     }
     ret
 }
@@ -238,11 +238,9 @@ fn checksum(data: &[u8]) -> [u8; 4] {
     let mut big_integer = u32::from_le_bytes(sum) as u64;
     big_integer *= 1968;
     let bytes = big_integer.to_le_bytes();
-    let mut i = 0;
     let mut ret = [0u8; 4];
-    for j in (0..4).rev() {
-        ret[j] = bytes[i];
-        i += 1;
+    for (j, byte) in (0..4).rev().zip(bytes) {
+        ret[j] = byte;
     }
     ret
 }

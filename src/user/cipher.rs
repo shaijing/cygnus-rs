@@ -1,4 +1,4 @@
-use aes_gcm::{aead::Aead, AeadCore, Aes256Gcm, Key, KeyInit, Nonce};
+use aes_gcm::{AeadCore, Aes256Gcm, Key, KeyInit, Nonce, aead::Aead};
 use rand::rngs::OsRng;
 use std::io::{BufReader, BufWriter, Read, Write};
 
@@ -62,8 +62,8 @@ impl UserCipher {
         let mut mac = [0u8; 6];
         reader.read_exact(&mut mac)?;
 
-        let cipher = Aes256Gcm::new(&key);
-        let password = cipher.decrypt(&nonce, encrypted_password.as_ref())?;
+        let cipher = Aes256Gcm::new(key);
+        let password = cipher.decrypt(nonce, encrypted_password.as_ref())?;
 
         Ok(User::new(
             String::from_utf8(username)?,

@@ -150,7 +150,7 @@ fn keep_alive(ctx: &mut DrContext) -> AuthResult<()> {
         ctx.client.recv(&mut recv_buf)?;
         ctx.data.keep_alive_version = (recv_buf[28], recv_buf[29]);
 
-        if keep_40_count % 21 == 0 {
+        if keep_40_count.is_multiple_of(21) {
             let mut recv_buf = [0; 300];
             ctx.get_keep_alive_data_40(
                 AliveType::EXTRA,

@@ -18,10 +18,8 @@ impl User {
 
     pub fn transform_mac(mac: &str) -> UserResult<[u8; 6]> {
         let mut mac_bytes = [0u8; 6];
-        let mut i = 0;
-        for byte in mac.split(':') {
+        for (i, byte) in mac.split(':').enumerate() {
             mac_bytes[i] = u8::from_str_radix(byte, 16)?;
-            i += 1;
         }
         Ok(mac_bytes)
     }

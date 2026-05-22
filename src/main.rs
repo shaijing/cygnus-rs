@@ -3,8 +3,8 @@ use cygnus::{
     auth::auth_command_resolver,
     user::user_command_resolver,
 };
-use time::{macros::format_description, UtcOffset};
-use tracing::{error, Level};
+use time::{UtcOffset, macros::format_description};
+use tracing::{Level, error};
 use tracing_subscriber::fmt::time::OffsetTime;
 
 fn main() {

@@ -1,15 +1,15 @@
 [package]
 name = "cygnus"
 version = "0.2.1"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 aes-gcm = { version = "0.10.3", features = ["std"] }
-clap = { version = "4.5.20", features = ["derive"] }
-hostname = "0.4.0"
+clap = { version = "4.6.1", features = ["derive"] }
+hostname = "0.4.2"
 md5 = "0.7.0"
-rand = "0.8.5"
-thiserror = "1.0.64"
-time = { version = "0.3.44", features = ["formatting", "local-offset", "macros"] }
-tracing = "0.1.40"
-tracing-subscriber = { version = "0.3.18", features = ["time"] }
+rand = "0.8.6"
+thiserror = "1.0.69"
+time = { version = "0.3.47", features = ["formatting", "local-offset", "macros"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["time"] }
