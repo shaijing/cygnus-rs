@@ -1,3 +1,7 @@
 /target
 .direnv
 __src
+
+.claude/
+.vscode/
+.idea/
